@@ -1,0 +1,40 @@
+# --------- Types ---------
+
+type Author {
+    fullname: String,
+    email: String!
+    posts: [Post]
+}
+
+type Post {
+    id: Int!
+    title: String!
+    description: String!
+    content: String!
+    author: Author!
+}
+
+# --------- Forms Inputs ---------
+
+input PostInput {
+    title: String!
+    description: String!
+    content: String!
+}
+
+input AuthorInput {
+    fullname: String,
+    email: String!
+}
+
+# --------- Queries, Mutations ---------
+
+type Query {
+    findAuthor(email: String!): Author
+    findPost(id: Int!): Post
+}
+
+type Mutation {
+    createAuthor(author: AuthorInput): Author
+    createPost(post: PostInput!, email: String): Post
+}
